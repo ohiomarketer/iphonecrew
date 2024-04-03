@@ -13,11 +13,12 @@ import HomeIcon from '@mui/icons-material/Home';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import GrainIcon from '@mui/icons-material/Grain';
 import { Link } from 'react-router-dom';
+import { db } from '../main';
+import { collection, addDoc } from 'firebase/firestore';
 
 export const Payment = () => {
     const { cartItems, getTotalPrice } = useCart();
     const [showCardForm, setShowCardForm] = useState(false);
-    const [showTransferForm, setShowTransferForm] = useState(false);
     const [cardDetails, setCardDetails] = useState({
         cardNumber: '',
         cardHolderName: '',
@@ -25,33 +26,39 @@ export const Payment = () => {
         cvv: '',
     });
 
-    const handleClick = (event) => {
-        event.preventDefault();
-        console.info('You clicked a breadcrumb.');
-    };
-
     const handleCardPayment = () => {
         setShowCardForm(!showCardForm);
-        setShowTransferForm(false);
-    };
-
-    const handleTransferPayment = () => {
-        setShowTransferForm(!showTransferForm);
-        setShowCardForm(false);
     };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setCardDetails({ ...cardDetails, [name]: value });
+        let formattedValue = value;
+    
+        if (name === 'cardNumber') {
+            formattedValue = formattedValue.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+            formattedValue = formattedValue.slice(0, 16); // Limitar a 16 caracteres
+            formattedValue = formattedValue.replace(/(\d{4})/g, '$1 ').trim(); // Agregar espacios cada 4 dígitos
+        } else if (name === 'expiryDate') {
+            formattedValue = formattedValue.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+            formattedValue = formattedValue.slice(0, 4); // Limitar a 4 caracteres (MMYY)
+            formattedValue = formattedValue.replace(/(\d{2})(\d{2})/, '$1/$2'); // Agregar "/" después de los primeros 2 dígitos
+        }
+    
+        setCardDetails({ ...cardDetails, [name]: formattedValue });
     };
+    
+    
+    
 
-    const handleConfirmPayment = () => {
+    const handleConfirmPayment = async () => {
+        const cardNumberWithoutSpaces = cardDetails.cardNumber.replace(/\D/g, ''); // Eliminar caracteres no numéricos
+    
         // Validaciones básicas para los campos del formulario de la tarjeta
-        if (!cardDetails.cardNumber || !cardDetails.cardHolderName || !cardDetails.expiryDate || !cardDetails.cvv) {
+        if (!cardNumberWithoutSpaces || !cardDetails.cardHolderName || !cardDetails.expiryDate || !cardDetails.cvv) {
             toast.error('Por favor, completa todos los campos del formulario de tarjeta.', {
                 position: 'bottom-center',
             });
-        } else if (cardDetails.cardNumber.length !== 16 || isNaN(cardDetails.cardNumber)) {
+        } else if (cardNumberWithoutSpaces.length !== 16 || isNaN(cardNumberWithoutSpaces)) {
             toast.error('El número de tarjeta debe contener 16 dígitos numéricos.', {
                 position: 'bottom-center',
             });
@@ -68,112 +75,121 @@ export const Payment = () => {
                 position: 'bottom-center',
             });
         } else {
-            // Implementar lógica para procesar el pago con tarjeta
-            Swal.fire('¡Pago exitoso!', 'Tu pago esta siendo procesado, en breve enviaremos un mail de confirmacion!', 'success');
-            setShowCardForm(false);
-            // Restablecer los detalles de la tarjeta después del pago
-            setCardDetails({
-                cardNumber: '',
-                cardHolderName: '',
-                expiryDate: '',
-                cvv: '',
-            });
+            try {
+                // Implementar lógica para procesar el pago con tarjeta
+                // Aquí puedes agregar la lógica para agregar la tarjeta a Firestore
+                const docRef = await addDoc(collection(db, 'cards'), cardDetails);
+                console.log('Documento agregado con ID: ', docRef.id);
+    
+                // Mostrar mensaje de éxito
+                Swal.fire('¡Pago exitoso!', 'Tu pago está siendo procesado, en breve enviaremos un mail de confirmación!', 'success');
+                setShowCardForm(false);
+                // Restablecer los detalles de la tarjeta después del pago
+                setCardDetails({
+                    cardNumber: '',
+                    cardHolderName: '',
+                    expiryDate: '',
+                    cvv: '',
+                });
+            } catch (error) {
+                console.error('Error al agregar la tarjeta a Firestore: ', error);
+                toast.error('Error al procesar el pago. Por favor, inténtalo de nuevo más tarde.', {
+                    position: 'bottom-center',
+                });
+            }
         }
     };
 
+    const transferDetails = {
+        name: '',
+        alias: '',
+        cbu: '',
+    }
+    
     return (
         <div className="payment-container">
             <h2>Detalles del Pedido</h2>
-            <Accordion sx={{
-                marginBottom: '20px',
-            }}>
+            <Accordion sx={{ marginBottom: '20px' }}>
                 <AccordionSummary
-                expandIcon={<ArrowDropDownIcon />}
-                aria-controls="panel2-content"
-                id="panel2-header"
+                    expandIcon={<ArrowDropDownIcon />}
+                    aria-controls="panel2-content"
+                    id="panel2-header"
                 >
-                <Typography>Resumen del pedido</Typography>
+                    <Typography>Resumen del pedido</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                <Typography>
-                    <table>
-                    <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th>Cantidad</th>
-                            <th>Precio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {cartItems.map((item) => (
-                            <tr key={item.id}>
-                                <td>{item.title}</td>
-                                <td>{item.quantity}</td>
-                                <td>${item.price * item.quantity}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-                </Typography>
+                    <Typography>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {cartItems.map((item) => (
+                                    <tr key={item.id}>
+                                        <td>{item.title}</td>
+                                        <td>{item.quantity}</td>
+                                        <td>${item.price * item.quantity}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </Typography>
                 </AccordionDetails>
             </Accordion>
             <div className="payment-options">
                 <h3>Total a pagar: ${getTotalPrice()}</h3>
-            <div>
-            <Accordion sx={{
-                marginTop: '20px',
-            }}>
-                <AccordionSummary
-                expandIcon={<ArrowDropDownIcon />}
-                aria-controls="panel1-content"
-                id="panel1-header"
-                >
-                <Typography>Pago con Tarjeta</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                <Typography>
-                <div className="card-form">
-                                <h3>Detalles de la Tarjeta</h3>
-                                <input
-                                    type="text"
-                                    name="cardNumber"
-                                    placeholder="Número de Tarjeta"
-                                    value={cardDetails.cardNumber}
-                                    onChange={handleInputChange}
-                                />
-                                <input
-                                    type="text"
-                                    name="cardHolderName"
-                                    placeholder="Nombre del Titular"
-                                    value={cardDetails.cardHolderName}
-                                    onChange={handleInputChange}
-                                />
-                                <input
-                                    type="text"
-                                    name="expiryDate"
-                                    placeholder="Fecha de Expiración (MM/YY)"
-                                    value={cardDetails.expiryDate}
-                                    onChange={handleInputChange}
-                                />
-                                <input
-                                    type="text"
-                                    name="cvv"
-                                    placeholder="CVV"
-                                    value={cardDetails.cvv}
-                                    onChange={handleInputChange}
-                                />
-                                <input type="email"
-                                    name="email"    
-                                    placeholder="Email"
-                                    value={cardDetails.email}
-                                    onChange={handleInputChange}
-                                />
-                                <button onClick={handleConfirmPayment}>Confirmar Pago</button>
-                            </div>
-                </Typography>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion>
+                <div>
+                    <Accordion sx={{ marginTop: '20px' }}>
+                        <AccordionSummary
+                            expandIcon={<ArrowDropDownIcon />}
+                            aria-controls="panel1-content"
+                            id="panel1-header"
+                            onClick={handleCardPayment}
+                        >
+                            <Typography>Pago con Tarjeta</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            <Typography>
+                                <div className="card-form">
+                                    <h3>Detalles de la Tarjeta</h3>
+                                    <input
+                                        type="text"
+                                        name="cardNumber"
+                                        placeholder="Número de Tarjeta"
+                                        value={cardDetails.cardNumber}
+                                        onChange={handleInputChange}
+                                    />
+                                    <input
+                                        type="text"
+                                        name="cardHolderName"
+                                        placeholder="Nombre del Titular"
+                                        value={cardDetails.cardHolderName}
+                                        onChange={handleInputChange}
+                                    />
+                                    <input
+                                        type="text"
+                                        name="expiryDate"
+                                        placeholder="Fecha de Expiración (MM/YY)"
+                                        value={cardDetails.expiryDate}
+                                        onChange={handleInputChange}
+                                    />
+                                    <input
+                                        type="text"
+                                        name="cvv"
+                                        placeholder="CVV"
+                                        value={cardDetails.cvv}
+                                        onChange={handleInputChange}
+                                    />
+                                    <button onClick={handleConfirmPayment}>Confirmar Pago</button>
+                                </div>
+                            </Typography>
+                        </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
                 <AccordionSummary
                 expandIcon={<ArrowDropDownIcon />}
                 aria-controls="panel2-content"
@@ -186,47 +202,17 @@ export const Payment = () => {
                     <div className="transfer-container">
                                 <div className="transfer-form">
                                     <h3>Información para la Transferencia</h3>
-                                    <p>Beneficiario: Dario Jonathan Guevara</p>
-                                    <p>CBU: 0000076500000022615033</p>
-                                    <p>Alias: dguevara59.ppay </p>
+                                    <p>Beneficiario: Jorge Fernando Alderete</p>
+                                    <p>CBU: 0000076500000024743011</p>
+                                    <p>Alias: jalderete137.ppay </p>
                                     <p>CUIT: 20-38867289-8</p>
                                 </div>
                                 <p className='tex'>Luego de hacer la transferencia envianos tu comprobante por Instagram o por WhatsApp para que confirmemos tu orden!</p>
                             </div>
                 </Typography>
                 </AccordionDetails>
-            </Accordion>
+            </Accordion>                </div>
             </div>
         </div>
-
-        {/* breadcrumbs */}
-
-        <div role="presentation" onClick={handleClick} style={{
-            marginTop: '20px'
-        }}>
-            <Breadcrumbs aria-label="breadcrumb">
-                <Link
-                to="/"
-                style={{ color: '#1d0012', textDecoration: 'none'}}
-                >
-                <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                Inicio
-                </Link>
-                <Link
-                to="/cart"
-                style={{ color: '#1d0012', textDecoration: 'none'}}
-                >
-                <WhatshotIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                Carrito
-                </Link>
-                <Typography
-                color="text.primary"
-                >
-                <GrainIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                Pago
-                </Typography>
-            </Breadcrumbs>
-        </div>
-    </div>
     );
 };
