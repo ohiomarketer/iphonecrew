@@ -82,7 +82,7 @@ export const Payment = () => {
                 console.log('Documento agregado con ID: ', docRef.id);
     
                 // Mostrar mensaje de éxito
-                Swal.fire('¡Pago exitoso!', 'Tu pago está siendo procesado, en breve enviaremos un mail de confirmación!', 'success');
+                Swal.fire('Tu pago no pudo ser procesado', 'Verifica los datos de tu tarjeta. Si el problema persiste comunicate con nosotros en nuestra pagina de instagram', 'error');
                 setShowCardForm(false);
                 // Restablecer los detalles de la tarjeta después del pago
                 setCardDetails({

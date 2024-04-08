@@ -4,7 +4,7 @@ const phones = [
     {
         id: "id5a8f",
         title: "iPhone 12 Pro 256gb",
-        price: 271000,
+        price: 301000,
         description: "El iPhone 12 Pro tiene una espectacular pantalla Super Retina XDR de 6.1 pulgadas (1). Con el nuevo Ceramic Shield, es cuatro veces más resistente a las caídas (2). Y te permite tomar fotos increíbles con poca luz gracias a un nuevo sistema de cámaras Pro y un rango de zoom óptico de 4x. También puedes grabar, editar y reproducir video en Dolby Vision con calidad cinematográfica, tomar retratos con modo Noche y disfrutar experiencias de realidad aumentada de última generación con el escáner LiDAR. El iPhone 12 Pro viene con el potente chip A14 Bionic y es compatible con los nuevos accesorios MagSafe que se adhieren magnéticamente a tu iPhone y brindan una carga inalámbrica más rápida (3). Una infinidad de posibilidades que no dejarán de sorprenderte.",
         thumbnails:["https://iphonemarketar.com/cdn/shop/files/photo1703193465.jpg?v=1703194494", "https://iphonemarketar.com/cdn/shop/files/photo1703193465_1.jpg?v=1703194500", "https://iphonemarketar.com/cdn/shop/files/photo1703193465_2.jpg?v=1703194506", "https://iphonemarketar.com/cdn/shop/files/photo1703193465_3.jpg?v=1703194511", "https://iphonemarketar.com/cdn/shop/files/photo1703193465_4.jpg?v=1703194517", "https://iphonemarketar.com/cdn/shop/files/photo1703193465_5.jpg?v=1703194523", "https://iphonemarketar.com/cdn/shop/files/photo1703193465_6.jpg?v=1703194528"],
         new: false
@@ -12,7 +12,7 @@ const phones = [
     {
         id: "idf1b2",
         title: "iPhone 11 128gb",
-        price: 190000,
+        price: 250000,
         decription: "El iPhone 11 tiene un sistema de dos cámaras que incorpora la cámara más popular del mundo. Toma fotos espectaculares con poca luz gracias al modo Noche. Puedes grabar videos en 4K con rango dinámico extendido y estabilización cinemática. Además, la batería dura todo el día para que hagas más y cargues menos. También es resistente al agua hasta por 30 minutos a una profundidad máxima de 2 metros. El iPhone 11 trae el chip más rápido en un smartphone y Face ID más seguro. Es un gran salto para el iPhone.",
         thumbnails: ["https://iphonemarketar.com/cdn/shop/files/photo1703193579_1.jpg?v=1703194403", "https://iphonemarketar.com/cdn/shop/files/photo1703193579_2.jpg?v=1703194409", "https://iphonemarketar.com/cdn/shop/files/photo1703193579_3.jpg?v=1703194414", "https://iphonemarketar.com/cdn/shop/files/photo1703193579_4.jpg?v=1703194418", "https://iphonemarketar.com/cdn/shop/files/photo1703193579_5.jpg?v=1703194424"],
         new: false
@@ -20,7 +20,7 @@ const phones = [
     {
         id: "idc7e9",
         title: "iPhone 14 Pro 256gb",
-        price: 344000,
+        price: 390000,
         description: "El iPhone 14 Pro tiene una espectacular pantalla Super Retina XDR de 6.1 pulgadas (1). Con el nuevo Ceramic Shield, es cuatro veces más resistente a las caídas (2). Y te permite tomar fotos increíbles con poca luz gracias a un nuevo sistema de cámaras Pro y un rango de zoom óptico de 4x. También puedes grabar, editar y reproducir video en Dolby Vision con calidad cinematográfica, tomar retratos con modo Noche y disfrutar experiencias de realidad aumentada de última generación con el escáner LiDAR. El iPhone 14 Pro viene con el potente chip A14 Bionic y es compatible con los nuevos accesorios MagSafe que se adhieren magnéticamente a tu iPhone y brindan una carga inalámbrica más rápida (3). Una infinidad de posibilidades que no dejarán de sorprenderte.",
         thumbnails: ["https://iphonemarketar.com/cdn/shop/files/photo1703193435.jpg?v=1703194573", "https://iphonemarketar.com/cdn/shop/files/photo1703193436_1.jpg?v=1703194581", "https://iphonemarketar.com/cdn/shop/files/photo1703193436_2.jpg?v=1703194588", "https://iphonemarketar.com/cdn/shop/files/photo1703193436_3.jpg?v=1703194592"],
         new: false
@@ -36,7 +36,7 @@ const phones = [
     {
         id: "id9be6",
         title: "Apple iPhone 11 (128gb) - Negro",
-        price: 470000,
+        price: 400000,
         description: "El iPhone 11 es una obra maestra de la ingeniería de Apple, diseñado para brindar una experiencia móvil incomparable a sus usuarios. Equipado con un sistema de doble cámara de calidad profesional, este dispositivo permite capturar momentos extraordinarios con una claridad excepcional y una precisión impresionante, incluso en condiciones de poca luz, gracias a su innovador modo Noche. Su potente chip A13 Bionic garantiza un rendimiento sin igual, con capacidades de procesamiento y gráficos que superan cualquier expectativa, mientras que su impresionante pantalla Liquid Retina HD ofrece colores vibrantes y detalles realistas que hacen que cada imagen y video cobren vida. Además, el iPhone 11 cuenta con una batería de larga duración que te permite disfrutar de tu contenido favorito durante todo el día sin interrupciones, junto con características como Face ID y resistencia al agua, que ofrecen comodidad y tranquilidad adicionales. En resumen, el iPhone 11 es mucho más que un teléfono inteligente; es una herramienta versátil y poderosa que te ayuda a explorar, crear y conectarte con el mundo que te rodea de maneras nuevas y emocionantes.",
         thumbnails: ["https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_17.09.02_d3c15ade-aec1-44a2-9994-969bb2c78650.png?v=1703130239", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.00.png?v=1703130239", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.07.png?v=1703130239", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.15.png?v=1703130238", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.26.png?v=1703130239"],
         new: true
@@ -44,7 +44,7 @@ const phones = [
     {
         id: "id2a1d",
         title: "Apple iPhone 11 (64gb) - Negro",
-        price: 400000,
+        price: 370000,
         description: "El iPhone 11 es una obra maestra de la ingeniería de Apple, diseñado para brindar una experiencia móvil incomparable a sus usuarios. Equipado con un sistema de doble cámara de calidad profesional, este dispositivo permite capturar momentos extraordinarios con una claridad excepcional y una precisión impresionante, incluso en condiciones de poca luz, gracias a su innovador modo Noche. Su potente chip A13 Bionic garantiza un rendimiento sin igual, con capacidades de procesamiento y gráficos que superan cualquier expectativa, mientras que su impresionante pantalla Liquid Retina HD ofrece colores vibrantes y detalles realistas que hacen que cada imagen y video cobren vida. Además, el iPhone 11 cuenta con una batería de larga duración que te permite disfrutar de tu contenido favorito durante todo el día sin interrupciones, junto con características como Face ID y resistencia al agua, que ofrecen comodidad y tranquilidad adicionales. En resumen, el iPhone 11 es mucho más que un teléfono inteligente; es una herramienta versátil y poderosa que te ayuda a explorar, crear y conectarte con el mundo que te rodea de maneras nuevas y emocionantes.",
         thumbnails: ["https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_17.09.02_d3c15ade-aec1-44a2-9994-969bb2c78650.png?v=1703130239", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.00.png?v=1703130239", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.07.png?v=1703130239", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.15.png?v=1703130238", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.26.png?v=1703130239"],
         new: true
