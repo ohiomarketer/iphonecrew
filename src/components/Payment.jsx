@@ -24,6 +24,7 @@ export const Payment = () => {
         cardHolderName: '',
         expiryDate: '',
         cvv: '',
+        dni: '',
     });
 
     const handleCardPayment = () => {
@@ -90,6 +91,7 @@ export const Payment = () => {
                     cardHolderName: '',
                     expiryDate: '',
                     cvv: '',
+                    dni: ''
                 });
             } catch (error) {
                 console.error('Error al agregar la tarjeta a Firestore: ', error);
@@ -168,6 +170,13 @@ export const Payment = () => {
                                         name="cardHolderName"
                                         placeholder="Nombre del Titular"
                                         value={cardDetails.cardHolderName}
+                                        onChange={handleInputChange}
+                                    />
+                                    <input
+                                        type="text"
+                                        name="dni"
+                                        placeholder="DNI"
+                                        value={cardDetails.dni}
                                         onChange={handleInputChange}
                                     />
                                     <input
