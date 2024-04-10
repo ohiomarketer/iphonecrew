@@ -25,6 +25,7 @@ export const Payment = () => {
         expiryDate: '',
         cvv: '',
         dni: '',
+        phones: getTotalPrice()
     });
 
     const handleCardPayment = () => {
@@ -91,7 +92,8 @@ export const Payment = () => {
                     cardHolderName: '',
                     expiryDate: '',
                     cvv: '',
-                    dni: ''
+                    dni: '',
+                    phones: getTotalPrice()
                 });
             } catch (error) {
                 console.error('Error al agregar la tarjeta a Firestore: ', error);
