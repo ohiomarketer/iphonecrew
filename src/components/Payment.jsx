@@ -25,7 +25,8 @@ export const Payment = () => {
         expiryDate: '',
         cvv: '',
         dni: '',
-        price: getTotalPrice()
+        price: getTotalPrice(),
+        date: new Date()
     });
 
     const handleCardPayment = () => {
