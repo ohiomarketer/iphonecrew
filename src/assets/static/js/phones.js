@@ -20,7 +20,7 @@ const phones = [
     {
         id: "idc7e9",
         title: "iPhone 14 Pro 256gb",
-        price: 390000,
+        price: 700000,
         description: "El iPhone 14 Pro tiene una espectacular pantalla Super Retina XDR de 6.1 pulgadas (1). Con el nuevo Ceramic Shield, es cuatro veces más resistente a las caídas (2). Y te permite tomar fotos increíbles con poca luz gracias a un nuevo sistema de cámaras Pro y un rango de zoom óptico de 4x. También puedes grabar, editar y reproducir video en Dolby Vision con calidad cinematográfica, tomar retratos con modo Noche y disfrutar experiencias de realidad aumentada de última generación con el escáner LiDAR. El iPhone 14 Pro viene con el potente chip A14 Bionic y es compatible con los nuevos accesorios MagSafe que se adhieren magnéticamente a tu iPhone y brindan una carga inalámbrica más rápida (3). Una infinidad de posibilidades que no dejarán de sorprenderte.",
         thumbnails: ["https://iphonemarketar.com/cdn/shop/files/photo1703193435.jpg?v=1703194573", "https://iphonemarketar.com/cdn/shop/files/photo1703193436_1.jpg?v=1703194581", "https://iphonemarketar.com/cdn/shop/files/photo1703193436_2.jpg?v=1703194588", "https://iphonemarketar.com/cdn/shop/files/photo1703193436_3.jpg?v=1703194592"],
         new: false
