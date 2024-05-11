@@ -68,7 +68,7 @@ const phones = [
     {
         id: "id0e9d",
         title: "Apple iPhone 13 (128 GB) - Azul medianoche",
-        price: 450000,
+        price: 480000,
         description: "El iPhone 13 representa la excelencia en la innovación tecnológica y el diseño elegante. Con su impresionante pantalla Super Retina XDR, este dispositivo ofrece colores vibrantes y detalles nítidos que hacen que cada experiencia visual sea cautivadora. Equipado con el potente chip A15 Bionic, el iPhone 13 brinda un rendimiento excepcional y una eficiencia energética líder en su clase, permitiéndote disfrutar de tus aplicaciones y juegos favoritos con fluidez y rapidez. Además, su avanzado sistema de cámaras te permite capturar fotos y videos de alta calidad en cualquier entorno, mientras que funciones como Face ID y resistencia al agua ofrecen comodidad y tranquilidad en el uso diario. En resumen, el iPhone 13 es una obra maestra de la ingeniería que redefine los estándares de la tecnología móvil, diseñado para aquellos que buscan lo mejor en rendimiento, estilo y funcionalidad.",
         thumbnails: ["https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_17.09.16.png?v=1702584688", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-13ala_s_21.33.17.png?v=1702584688", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-13ala_s_21.33.27.png?v=1702584688", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-13ala_s_21.33.33.png?v=1702584688", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-13ala_s_21.33.53.png?v=1702584688"],
         new: true
@@ -76,7 +76,7 @@ const phones = [
     {
         id: "id4c5b",
         title: "Apple iPhone 13 (256gb) - Azul",
-        price: 490000,
+        price: 500000,
         description: "El iPhone 13 representa la excelencia en la innovación tecnológica y el diseño elegante. Con su impresionante pantalla Super Retina XDR, este dispositivo ofrece colores vibrantes y detalles nítidos que hacen que cada experiencia visual sea cautivadora. Equipado con el potente chip A15 Bionic, el iPhone 13 brinda un rendimiento excepcional y una eficiencia energética líder en su clase, permitiéndote disfrutar de tus aplicaciones y juegos favoritos con fluidez y rapidez. Además, su avanzado sistema de cámaras te permite capturar fotos y videos de alta calidad en cualquier entorno, mientras que funciones como Face ID y resistencia al agua ofrecen comodidad y tranquilidad en el uso diario. En resumen, el iPhone 13 es una obra maestra de la ingeniería que redefine los estándares de la tecnología móvil, diseñado para aquellos que buscan lo mejor en rendimiento, estilo y funcionalidad.",
         thumbnails: ["https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_17.07.21.png?v=1702584705", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_16.53.56.png?v=1702584705", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_16.54.01.png?v=1702584705", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_16.54.09.png?v=1702584705"],
         new: true
