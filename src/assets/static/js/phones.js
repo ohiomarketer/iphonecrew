@@ -38,7 +38,7 @@ const phones = [
         title: "Apple iPhone 11 (64gb) - Negro",
         price: 300000,
         description: "El iPhone 11 es una obra maestra de la ingeniería de Apple, diseñado para brindar una experiencia móvil incomparable a sus usuarios. Equipado con un sistema de doble cámara de calidad profesional, este dispositivo permite capturar momentos extraordinarios con una claridad excepcional y una precisión impresionante, incluso en condiciones de poca luz, gracias a su innovador modo Noche. Su potente chip A13 Bionic garantiza un rendimiento sin igual, con capacidades de procesamiento y gráficos que superan cualquier expectativa, mientras que su impresionante pantalla Liquid Retina HD ofrece colores vibrantes y detalles realistas que hacen que cada imagen y video cobren vida. Además, el iPhone 11 cuenta con una batería de larga duración que te permite disfrutar de tu contenido favorito durante todo el día sin interrupciones, junto con características como Face ID y resistencia al agua, que ofrecen comodidad y tranquilidad adicionales. En resumen, el iPhone 11 es mucho más que un teléfono inteligente; es una herramienta versátil y poderosa que te ayuda a explorar, crear y conectarte con el mundo que te rodea de maneras nuevas y emocionantes.",
-        thumbnails: ["https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_17.09.02_d3c15ade-aec1-44a2-9994-969bb2c78650.png?v=1703130239", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.00.png?v=1703130239", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.07.png?v=1703130239", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.15.png?v=1703130238", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.26.png?v=1703130239"],
+        thumbnails: ["https://http2.mlstatic.com/D_965662-MLA70229649576_072023-O.jpg", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.00.png?v=1703130239", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.07.png?v=1703130239", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.15.png?v=1703130238", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-21ala_s_00.43.26.png?v=1703130239"],
         new: true
     },
     {
@@ -46,7 +46,7 @@ const phones = [
         title: "Apple iPhone 12 (128gb) - Blanco",
         price: 430000,
         description: "El iPhone 12 es un testimonio de la continua innovación y excelencia de Apple en el mundo de la tecnología móvil. Con su impresionante pantalla Super Retina XDR de borde a borde, este dispositivo ofrece una experiencia visual inigualable, con colores vibrantes y detalles nítidos que hacen que cada imagen cobre vida. Equipado con el potente chip A14 Bionic, el iPhone 12 proporciona un rendimiento excepcional y una eficiencia energética superior, lo que te permite realizar múltiples tareas, jugar juegos intensivos y disfrutar de experiencias multimedia de alta calidad sin problemas. Además, su sistema de cámara avanzado te permite capturar fotos y videos impresionantes en cualquier situación, desde retratos artísticos hasta paisajes expansivos, mientras que características como la carga inalámbrica MagSafe y la resistencia al agua ofrecen comodidad y durabilidad adicionales. En resumen, el iPhone 12 es una combinación perfecta de estilo y rendimiento, diseñado para aquellos que exigen lo mejor en tecnología móvil",
-        thumbnails: ["https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_17.07.39.png?v=1702584644", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_16.56.11.png?v=1702584644", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_16.56.16.png?v=1702584644&width=1100", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_16.56.24.png?v=1702584644"],
+        thumbnails: ["https://www.manzanasusadas.com/resources/archivosbd/productos_galeria/vender-iphone-iphone-12-y-iphone-12-mini-apple-segunda-mano-321620220225142911-15-355x355.jpeg", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_16.56.11.png?v=1702584644", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_16.56.16.png?v=1702584644&width=1100", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_16.56.24.png?v=1702584644"],
         new: true
     },
     {
@@ -67,7 +67,7 @@ const phones = [
     },
     {
         id: "id4c5b",
-        title: "Apple iPhone 13 (256gb) - Azul",
+        title: "Apple iPhone 13 (256gb) - Blanco",
         price: 500000,
         description: "El iPhone 13 representa la excelencia en la innovación tecnológica y el diseño elegante. Con su impresionante pantalla Super Retina XDR, este dispositivo ofrece colores vibrantes y detalles nítidos que hacen que cada experiencia visual sea cautivadora. Equipado con el potente chip A15 Bionic, el iPhone 13 brinda un rendimiento excepcional y una eficiencia energética líder en su clase, permitiéndote disfrutar de tus aplicaciones y juegos favoritos con fluidez y rapidez. Además, su avanzado sistema de cámaras te permite capturar fotos y videos de alta calidad en cualquier entorno, mientras que funciones como Face ID y resistencia al agua ofrecen comodidad y tranquilidad en el uso diario. En resumen, el iPhone 13 es una obra maestra de la ingeniería que redefine los estándares de la tecnología móvil, diseñado para aquellos que buscan lo mejor en rendimiento, estilo y funcionalidad.",
         thumbnails: ["https://i.imgur.com/jTPGrBa.jpg", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_16.53.56.png?v=1702584705", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_16.54.01.png?v=1702584705", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-14ala_s_16.54.09.png?v=1702584705"],
@@ -75,7 +75,7 @@ const phones = [
     },
     {
         id: "id8d2f",
-        title: "Apple iPhone 14 (128gb) - Medianoche",
+        title: "Apple iPhone 14 (128gb) - Rojo",
         price: 600000,
         description: "El iPhone 14 es una maravilla tecnológica que fusiona diseño elegante con un rendimiento excepcional. Con una pantalla Super Retina XDR brillante y vívida, este dispositivo ofrece una experiencia visual cautivadora que redefine los límites de la calidad de imagen en un smartphone. Impulsado por el potente chip A14 Bionic, el iPhone 14 garantiza un rendimiento rápido y fluido, lo que te permite realizar múltiples tareas sin problemas y disfrutar de tus aplicaciones favoritas con la máxima eficiencia. Con una cámara Pro avanzada, puedes capturar momentos inolvidables con una claridad y detalle asombrosos, mientras que características innovadoras como Face ID y carga MagSafe añaden comodidad y seguridad a tu vida diaria. En resumen, el iPhone 14 es una combinación perfecta de estilo, potencia y funcionalidad, diseñado para aquellos que buscan lo mejor en tecnología móvil",
         thumbnails: ["https://i.imgur.com/Be16HU9.jpg", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-13ala_s_21.47.36.png?v=1702584735", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-13ala_s_21.47.41.png?v=1702584735", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-13ala_s_21.47.48.png?v=1702584735&width=1100", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-13ala_s_21.47.58.png?v=1702584735"],
@@ -91,7 +91,7 @@ const phones = [
     },
     {
         id: "idb9a3",
-        title: "Apple iPhone 15 (256gb) - Rosa",
+        title: "Apple iPhone 15 (256gb)",
         price: 800000,
         description: "El iPhone 15 Pro representa la cúspide de la innovación tecnológica en el mundo de los smartphones. Con una combinación magistral de diseño elegante y funcionalidad avanzada, este dispositivo redefine los estándares de excelencia en la industria móvil. Equipado con una pantalla Super Retina XDR de última generación, el iPhone 15 Pro ofrece una experiencia visual incomparable, con colores vibrantes y negros profundos que hacen que cada imagen cobre vida.",
         thumbnails: ["https://i.imgur.com/A6DDFhb.jpg", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-13ala_s_21.42.11.png?v=1702584598", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-13ala_s_21.42.16.png?v=1702584598", "https://iphonemarketar.com/cdn/shop/files/CapturadePantalla2023-12-13ala_s_21.42.24.png?v=1702584598"],
