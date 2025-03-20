@@ -214,10 +214,8 @@ export const Payment = () => {
                     <div className="transfer-container">
                                 <div className="transfer-form">
                                     <h3>Información para la Transferencia</h3>
-                                    <p>Beneficiario: Jorge Fernando Alderete</p>
-                                    <p>CBU: 0000076500000024743011</p>
-                                    <p>Alias: jalderete137.ppay </p>
-                                    <p>CUIT: 20-38867289-8</p>
+                                    <p>Beneficiario: Daniela Pamela Broche</p>
+                                    <p>CBU: 0000077200132503575942</p>
                                 </div>
                                 <p className='tex'>Luego de hacer la transferencia envianos tu comprobante por Instagram o por WhatsApp para que confirmemos tu orden!</p>
                             </div>
