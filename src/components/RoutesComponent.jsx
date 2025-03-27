@@ -6,6 +6,7 @@ import { Product } from './Product'
 import { Contact } from './Contact'
 import { Cart } from './Cart'
 import { Payment } from './Payment'
+import { Footer } from './Footer'
 
 export const RoutesComponent = () => {
   return (
@@ -19,6 +20,7 @@ export const RoutesComponent = () => {
             <Route path='/cart' element={<Cart />} />
             <Route path='/payment' element={<Payment />} />
         </Routes>
+        <Footer />
     </Router>
   )
 }

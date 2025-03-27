@@ -3,6 +3,8 @@
   --secondary-font: "Domine", serif;
 }
 
+
+
 * {
   margin: 0;
   padding: 0;
@@ -657,3 +659,47 @@ body {
   font-size: 0.8rem;
   font-weight: bold;
 }/*# sourceMappingURL=index.css.map */
+.footer {
+  background-color: #1d0012; /* bg-gray-900 */
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer .title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.footer .info {
+  font-size: 0.875rem;
+  margin: 4px 0;
+}
+
+.footer .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.footer .social-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer .social-links a:hover {
+  color: #a0aec0; /* hover:text-gray-400 */
+}
+
+.footer .copyright {
+  font-size: 0.75rem;
+  margin-top: 16px;
+}
+

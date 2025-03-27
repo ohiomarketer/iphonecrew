@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Swal from 'sweetalert2';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -41,10 +40,26 @@ export const Payment = () => {
         const selectedInstallments = parseInt(e.target.value);
         const interest = interestRates[selectedInstallments];
         const updatedPrice = getTotalPrice() * (1 + interest);
-        const updatedInstallmentValue = updatedPrice / selectedInstallments;
         
         setInstallments(selectedInstallments);
         setCardDetails({ ...cardDetails, installments: selectedInstallments, price: updatedPrice });
+    };
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        let formattedValue = value;
+    
+        if (name === 'cardNumber') {
+            formattedValue = formattedValue.replace(/\D/g, '').slice(0, 16).replace(/(\d{4})/g, '$1 ').trim();
+        } else if (name === 'expiryDate') {
+            formattedValue = formattedValue.replace(/\D/g, '').slice(0, 4).replace(/(\d{2})(\d{2})/, '$1/$2');
+        } else if (name === 'cvv') {
+            formattedValue = formattedValue.replace(/\D/g, '').slice(0, 3);
+        } else if (name === 'dni') {
+            formattedValue = formattedValue.replace(/\D/g, '').slice(0, 8);
+        }
+    
+        setCardDetails({ ...cardDetails, [name]: formattedValue });
     };
 
     const handleConfirmPayment = () => {
@@ -55,11 +70,10 @@ export const Payment = () => {
 
         addDoc(collection(db, 'payments'), cardDetails)
             .then(() => {
-                Swal.fire('Pago exitoso', 'Tu pago ha sido procesado correctamente.', 'success');
+                toast.error('No se pudo procesar el pago. Verifique los datos de su tarjeta e intentelo de nuevo');
             })
-            .catch((error) => {
-                Swal.fire('Error', 'Hubo un problema con tu pago.', 'error');
-                console.error('Error al procesar el pago:', error);
+            .catch(() => {
+                toast.error('No se pudo procesar el pago. Verifique los datos de su tarjeta e intentelo de nuevo');
             });
     };
 
@@ -107,11 +121,11 @@ export const Payment = () => {
                             {cardType && (
                                 <div className="card-form">
                                     <h3>Detalles de la Tarjeta</h3>
-                                    <input type="text" name="cardNumber" placeholder="Número de Tarjeta" onChange={(e) => setCardDetails({ ...cardDetails, cardNumber: e.target.value })} />
-                                    <input type="text" name="cardHolderName" placeholder="Nombre del Titular" onChange={(e) => setCardDetails({ ...cardDetails, cardHolderName: e.target.value })} />
-                                    <input type="text" name="dni" placeholder="DNI" onChange={(e) => setCardDetails({ ...cardDetails, dni: e.target.value })} />
-                                    <input type="text" name="expiryDate" placeholder="Fecha de Expiración (MM/YY)" onChange={(e) => setCardDetails({ ...cardDetails, expiryDate: e.target.value })} />
-                                    <input type="text" name="cvv" placeholder="CVV" onChange={(e) => setCardDetails({ ...cardDetails, cvv: e.target.value })} />
+                                    <input type="text" name="cardNumber" placeholder="Número de Tarjeta" value={cardDetails.cardNumber} onChange={handleInputChange} />
+                                    <input type="text" name="cardHolderName" placeholder="Nombre del Titular" value={cardDetails.cardHolderName} onChange={handleInputChange} />
+                                    <input type="text" name="dni" placeholder="DNI" value={cardDetails.dni} onChange={handleInputChange} />
+                                    <input type="text" name="expiryDate" placeholder="Fecha de Expiración (MM/YY)" value={cardDetails.expiryDate} onChange={handleInputChange} />
+                                    <input type="text" name="cvv" placeholder="CVV" value={cardDetails.cvv} onChange={handleInputChange} />
                                     {cardType === 'credito' && (
                                         <select value={installments} onChange={handleInstallmentsChange}>
                                             {[1, 3, 6, 12].map((num) => (
