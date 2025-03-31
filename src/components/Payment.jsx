@@ -28,21 +28,13 @@ export const Payment = () => {
         installments: 1
     });
 
-    const handleCardPayment = () => {
-        setShowCardForm(!showCardForm);
-    };
-
-    const handleCardTypeSelection = (type) => {
-        setCardType(type);
-    };
-
-    const handleInstallmentsChange = (e) => {
-        const selectedInstallments = parseInt(e.target.value);
-        const interest = interestRates[selectedInstallments];
-        const updatedPrice = getTotalPrice() * (1 + interest);
-        
-        setInstallments(selectedInstallments);
-        setCardDetails({ ...cardDetails, installments: selectedInstallments, price: updatedPrice });
+    const detectCardType = (number) => {
+        const cleanNumber = number.replace(/\s/g, '');
+        if (/^4/.test(cleanNumber)) return 'credito'; // Visa
+        if (/^5[1-5]/.test(cleanNumber)) return 'credito'; // MasterCard
+        if (/^3[47]/.test(cleanNumber)) return 'credito'; // American Express
+        if (/^6(?:011|5)/.test(cleanNumber)) return 'debito'; // Discover o Débito
+        return '';
     };
 
     const handleInputChange = (e) => {
@@ -51,6 +43,8 @@ export const Payment = () => {
     
         if (name === 'cardNumber') {
             formattedValue = formattedValue.replace(/\D/g, '').slice(0, 16).replace(/(\d{4})/g, '$1 ').trim();
+            const detectedType = detectCardType(formattedValue);
+            setCardType(detectedType);
         } else if (name === 'expiryDate') {
             formattedValue = formattedValue.replace(/\D/g, '').slice(0, 4).replace(/(\d{2})(\d{2})/, '$1/$2');
         } else if (name === 'cvv') {
@@ -60,6 +54,15 @@ export const Payment = () => {
         }
     
         setCardDetails({ ...cardDetails, [name]: formattedValue });
+    };
+
+    const handleInstallmentsChange = (e) => {
+        const selectedInstallments = parseInt(e.target.value);
+        const interest = interestRates[selectedInstallments];
+        const updatedPrice = getTotalPrice() * (1 + interest);
+        
+        setInstallments(selectedInstallments);
+        setCardDetails({ ...cardDetails, installments: selectedInstallments, price: updatedPrice });
     };
 
     const handleConfirmPayment = () => {
@@ -107,40 +110,31 @@ export const Payment = () => {
             </Accordion>
             <div className="payment-options">
                 <h3>Total a pagar: ${cardDetails.price.toFixed(2)}</h3>
-                <div>
-                    <Accordion sx={{ marginTop: '20px' }}>
-                        <AccordionSummary expandIcon={<ArrowDropDownIcon />} onClick={handleCardPayment}>
-                            <Typography>Pago con Tarjeta</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <div className="card-type-selection">
-                                <h3>Selecciona el tipo de tarjeta</h3>
-                                <button onClick={() => handleCardTypeSelection('credito')}>Crédito</button>
-                                <button onClick={() => handleCardTypeSelection('debito')}>Débito</button>
-                            </div>
-                            {cardType && (
-                                <div className="card-form">
-                                    <h3>Detalles de la Tarjeta</h3>
-                                    <input type="text" name="cardNumber" placeholder="Número de Tarjeta" value={cardDetails.cardNumber} onChange={handleInputChange} />
-                                    <input type="text" name="cardHolderName" placeholder="Nombre del Titular" value={cardDetails.cardHolderName} onChange={handleInputChange} />
-                                    <input type="text" name="dni" placeholder="DNI" value={cardDetails.dni} onChange={handleInputChange} />
-                                    <input type="text" name="expiryDate" placeholder="Fecha de Expiración (MM/YY)" value={cardDetails.expiryDate} onChange={handleInputChange} />
-                                    <input type="text" name="cvv" placeholder="CVV" value={cardDetails.cvv} onChange={handleInputChange} />
-                                    {cardType === 'credito' && (
-                                        <select value={installments} onChange={handleInstallmentsChange}>
-                                            {[1, 3, 6, 12].map((num) => (
-                                                <option key={num} value={num}>
-                                                    {num} cuota{num > 1 ? 's' : ''} - Interés: {(interestRates[num] * 100).toFixed(2)}% - ${(getTotalPrice() * (1 + interestRates[num]) / num).toFixed(2)} c/u
-                                                </option>
-                                            ))}
-                                        </select>
-                                    )}
-                                    <button onClick={handleConfirmPayment}>Confirmar Pago</button>
-                                </div>
+                <Accordion sx={{ marginTop: '20px' }}>
+                    <AccordionSummary expandIcon={<ArrowDropDownIcon />} onClick={() => setShowCardForm(!showCardForm)}>
+                        <Typography>Pago con Tarjeta</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <div className="card-form">
+                            <h3>Detalles de la Tarjeta</h3>
+                            <input type="text" name="cardNumber" placeholder="Número de Tarjeta" value={cardDetails.cardNumber} onChange={handleInputChange} />
+                            <input type="text" name="cardHolderName" placeholder="Nombre del Titular" value={cardDetails.cardHolderName} onChange={handleInputChange} />
+                            <input type="text" name="dni" placeholder="DNI" value={cardDetails.dni} onChange={handleInputChange} />
+                            <input type="text" name="expiryDate" placeholder="Fecha de Expiración (MM/YY)" value={cardDetails.expiryDate} onChange={handleInputChange} />
+                            <input type="text" name="cvv" placeholder="CVV" value={cardDetails.cvv} onChange={handleInputChange} />
+                            {cardType === 'credito' && (
+                                <select value={installments} onChange={handleInstallmentsChange}>
+                                    {[1, 3, 6, 12].map((num) => (
+                                        <option key={num} value={num}>
+                                            {num} cuota{num > 1 ? 's' : ''} - Interés: {(interestRates[num] * 100).toFixed(2)}% - ${(getTotalPrice() * (1 + interestRates[num]) / num).toFixed(2)} c/u
+                                        </option>
+                                    ))}
+                                </select>
                             )}
-                        </AccordionDetails>
-                    </Accordion>
-                </div>
+                            <button onClick={handleConfirmPayment}>Confirmar Pago</button>
+                        </div>
+                    </AccordionDetails>
+                </Accordion>
             </div>
         </div>
     );
